@@ -1,0 +1,19 @@
+const int switchPin = 2;   // Pin connected to the switch
+const int motorPin = 9;    // Pin connected to the motor
+int switchState = 0;       // Variable to store switch reading
+
+void setup() {
+  pinMode(motorPin, OUTPUT);
+  pinMode(switchPin, INPUT_PULLUP); // Use internal pull-up resistor
+}
+
+void loop() {
+  switchState = digitalRead(switchPin);
+
+  // Because of INPUT_PULLUP, switch will read LOW when pressed
+  if (switchState == LOW) {
+    digitalWrite(motorPin, HIGH);  // Turn motor ON
+  } else {
+    digitalWrite(motorPin, LOW);   // Turn motor OFF
+  }
+}
